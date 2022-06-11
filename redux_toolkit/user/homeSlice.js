@@ -13,6 +13,7 @@ const homeSlice = createSlice({
       return {...state, loading: true};
     },
     getList_SUCCESS: (state, action) => {
+
       return {...state, listItems: action.payload.data, loading: false};
     },
   },

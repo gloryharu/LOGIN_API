@@ -25,9 +25,11 @@ function* getListSaga() {
     const {user} = yield select();
     const response = yield call(API, {
       endPoint: 'post',
-      method: 'POST',
+      method: 'post',
       token: user?.userInfo?.accessToken,
+      param: null,
     });
+    console.log(response);
     yield put({type: 'home/getList_SUCCESS', payload: response});
   } catch (error) {
     console.log(error);

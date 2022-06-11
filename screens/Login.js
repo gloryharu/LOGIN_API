@@ -17,29 +17,6 @@ const Login = () => {
     setPassword('');
   };
 
-  // const userLogin = async () => {
-  //   try {
-  //     const response = await fetch("http://i-web.com.vn/api/v1/auth/signin", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         client_data: {
-  //           username: username,
-  //           password: password,
-  //         },
-  //       }),
-  //     });
-  //     const json = await response.json();
-  //     console.log("LOGIN: ", json?.data);
-  //     dispatch(login(json?.data))
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <View style={styles.container}>
       {!user?.userInfo?.isLogin ? (

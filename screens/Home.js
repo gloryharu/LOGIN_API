@@ -5,12 +5,11 @@ import {
   FlatList,
   ActivityIndicator,
   Image,
-  Button,
 } from 'react-native';
-import React, {useEffect, useLayoutEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getList} from '../redux_toolkit/user/homeSlice';
-import {API} from '../server/API';
+
 
 const Home = () => {
   const user = useSelector(state => state.user);
@@ -18,39 +17,11 @@ const Home = () => {
   const dispatch = useDispatch();
 
 
-  // const getListItem = async (token) => {
-  //   try {
-  //     const response = await fetch("http://i-web.com.vn/api/v1/auth/post", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + token,
-  //       },
-  //       body: JSON.stringify({}),
-  //     });
-  //     const json = await response.json();
-  //     console.log("List Item: ", json?.data);
-  //     dispatch(getList(json?.data));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const didMounted = useRef(true);
-  // useLayoutEffect(() => {
-  //   if (didMounted.current) {
-  //     didMounted.current = false;
-  //     return;
-  //   }
-  //  getList();
-  // });
-
   useEffect(() => {
     if (user?.userInfo?.accessToken) {
-        setTimeout(() => {
-          dispatch(getList());
-        }, 1800);
+      setTimeout(() => {
+        dispatch(getList());
+      }, 1800);
     }
   }, [user?.userInfo]);
 
