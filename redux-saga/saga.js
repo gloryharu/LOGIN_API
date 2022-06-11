@@ -1,4 +1,4 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
+import {call, put, takeEvery, select} from 'redux-saga/effects';
 import {API} from '../server/API';
 
 function* loginSaga(action) {
@@ -15,7 +15,20 @@ function* loginSaga(action) {
       },
     });
     yield put({type: 'user/login_res', payload: response});
-    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* getListSaga() {
+  try {
+    const {user} = yield select();
+    const response = yield call(API, {
+      endPoint: 'post',
+      method: 'POST',
+      token: user?.userInfo?.accessToken,
+    });
+    yield put({type: 'home/getList_SUCCESS', payload: response});
   } catch (error) {
     console.log(error);
   }
@@ -23,6 +36,7 @@ function* loginSaga(action) {
 
 function* saga() {
   yield takeEvery('user/login', loginSaga);
+  yield takeEvery('home/getList', getListSaga);
 }
 
 export default saga;

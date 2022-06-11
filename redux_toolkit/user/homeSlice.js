@@ -1,18 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   listItems: [],
+  loading: null,
 };
 
 const homeSlice = createSlice({
-  name: "home",
+  name: 'home',
   initialState,
   reducers: {
-    getList: (state, action) => {
-      return { ...state, listItems: action.payload };
+    getList: state => {
+      return {...state, loading: true};
+    },
+    getList_SUCCESS: (state, action) => {
+      return {...state, listItems: action.payload.data, loading: false};
     },
   },
 });
 
-export const { getList } = homeSlice.actions;
+export const {getList, getList_SUCCESS} = homeSlice.actions;
 export default homeSlice.reducer;

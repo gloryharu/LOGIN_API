@@ -1,4 +1,4 @@
-export const API = async ({endPoint, method, isLogin = false, param}) => {
+export const API = async ({endPoint, method, isLogin = false, param,token}) => {
   try {
     const response = await fetch(
       "http://i-web.com.vn/api/v1/auth/" + endPoint,
@@ -7,7 +7,7 @@ export const API = async ({endPoint, method, isLogin = false, param}) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "Authorization": isLogin ? null : "Bearer " + userInfo?.accessToken,
+          "Authorization": isLogin ? null : "Bearer " + token,
         },
         body: JSON.stringify(param),
       }
@@ -17,6 +17,5 @@ export const API = async ({endPoint, method, isLogin = false, param}) => {
     return json;
   } catch (error) {
     console.log(error);
-  
   }
 };
