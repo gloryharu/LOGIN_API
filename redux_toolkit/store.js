@@ -1,8 +1,8 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import userReducer from "./user/userSlice";
-import homeReducer from "./user/homeSlice";
-import createSagaMiddleware from "@redux-saga/core";
-import saga from "../redux-saga/saga";
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import userReducer from './user/userSlice';
+import homeReducer from './user/homeSlice';
+import createSagaMiddleware from '@redux-saga/core';
+import saga from '../redux-saga/saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -11,8 +11,9 @@ const store = configureStore({
     user: userReducer,
     home: homeReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(sagaMiddleware),
+  // [sagaMiddleware],
 });
 
 sagaMiddleware.run(saga);
