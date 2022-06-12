@@ -2,7 +2,7 @@ import {StyleSheet, View, Button, Text} from 'react-native';
 import React, {useState} from 'react';
 import Input from '../components/Input';
 import {useSelector, useDispatch} from 'react-redux';
-import {login, logout} from '../redux_toolkit/user/userSlice';
+import {login, logout} from '../redux_toolkit/slice/userSlice';
 
 const Login = () => {
   const [username, setUsername] = useState('');

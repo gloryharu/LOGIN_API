@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getList} from '../redux_toolkit/user/homeSlice';
+import {getList} from '../redux_toolkit/slice/homeSlice';
 
 
 const Home = () => {
